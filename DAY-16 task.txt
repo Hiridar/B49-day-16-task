@@ -1,0 +1,54 @@
+CALLBACK:
+
+
+1. First, let's define a function that simulates an asynchronous operation. This function will take a callback         function as a parameter and will call it after a certain amount of time.
+
+
+​
+    function asyncOperation(callback) {
+     setTimeout(() => {
+        callback();
+     }, 1000);
+    }                                         
+​
+
+2. Now, let's create a function that calls the `asyncOperation` function multiple times. Each time the `asyncOperation` function is called, it will be passed a different callback function.
+
+
+​
+function callbackHell() {
+ console.log('Starting...');
+​
+ asyncOperation(() => {
+    console.log('Step 1 completed...');
+​
+    asyncOperation(() => {
+      console.log('Step 2 completed...');
+​
+      asyncOperation(() => {
+        console.log('Step 3 completed...');
+​
+        asyncOperation(() => {
+          console.log('Step 4 completed...');
+​
+          asyncOperation(() => {
+            console.log('All steps completed!');
+          });
+        });
+      });
+    });
+ });
+}
+
+
+output :
+​
+Starting...
+Step 1 completed...
+Step 2 completed...
+Step 3 completed...
+Step 4 completed...
+All steps completed!
+​
+
+​
